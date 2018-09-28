@@ -1,13 +1,13 @@
 module.exports = function solveSudoku(matrix) {
   // your solution
-  const REQUIRED_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   const EMPTY = 0;
   const sudoku = matrix.slice();
-  let counter = 0;
+  // let counter = 0;
 
   const checkRow = (row, number) => {
     for (let index = 0; index < 9; index += 1) {
-      counter += 1;
+      // counter += 1;
       if (sudoku[row][index] === number) {
         return true;
       }
@@ -17,7 +17,7 @@ module.exports = function solveSudoku(matrix) {
 
   const checkColumn = (col, number) => {
     for (let index = 0; index < 9; index += 1) {
-      counter += 1;
+      // counter += 1;
       if (sudoku[index][col] === number) {
         return true;
       }
@@ -26,12 +26,12 @@ module.exports = function solveSudoku(matrix) {
   };
 
   const checkBox = (row, col, number) => {
-    const r = row - (row % 3); 
+    const r = row - (row % 3);
     const c = col - (col % 3);
 
     for (let i = r; i < r + 3; i += 1) {
       for (let j = c; j < c + 3; j += 1) {
-        counter += 1;
+        // counter += 1;
         if (sudoku[i][j] === number) {
           return true;
         }
@@ -39,7 +39,7 @@ module.exports = function solveSudoku(matrix) {
     }
 
     return false;
-  }
+  };
 
   const isNumberAllowed = (row, col, number) => !(
     checkRow(row, number)
@@ -67,70 +67,13 @@ module.exports = function solveSudoku(matrix) {
     }
     return true;
   };
-
-  // const checkSudoku = (sudokuGrid) => {
-  //   if (checkRows(sudokuGrid)) {
-  //     console.log('Rows are ok');
-  //     if (checkColumns(sudokuGrid)) {
-  //       console.log('Columns are ok');
-  //       // if (checkSquares(sudokuGrid)) {
-  //       //   return true;
-  //       // }
-  //     } else {
-  //       console.log('Columns are NOT ok!!!');
-  //     }
-  //   } else {
-  //     console.log('Rows are NOT ok!!!');
-  //   }
-  // };
-
-  // const checkRows = (sudokuGrid) => {
-  //   let result = true;
-  //   sudokuGrid.forEach((row) => {
-  //     if (!isValidRow(row)) {
-  //       console.log(`заходит в !isValidRow(row) на ${row}`);
-  //       result = false;
-  //     }
-  //   });
-  //   return result;
-  // };
-  // const isValidRow = (row) => {
-  //   let result = true;
-  //   // TODO: refactor with array.every() 
-  //   REQUIRED_NUMBERS.forEach((number) => {
-  //     if (!row.includes(number)) {
-  //       result = false;
-  //     }
-  //   });
-  //   return result;
-  // };
-
-  // const checkColumns = (sudokuGrid) => {
-  //   const columns = [];
-  //   const iter = Array.from(new Array(9), (x, i) => i);
-  //   iter.forEach((i) => {
-  //     const newColumn = [];
-  //     sudokuGrid.forEach(row => newColumn.push(row[i]));
-  //     columns.push(newColumn);
-  //   });
-  //   return checkRows(columns);
-  // };
-
-  // const checkSquares = (sudokuGrid) => {
-  //   const 
-  //   const rowsOfSquares = makeSquares(sudokuGrid);
-    
-
-  // };
-
-
   // checkSudoku(sudoku);
   if (checkSudoku(sudoku)) {
-    console.log(`счетчик: ${counter}`);
+    // console.log(`счетчик: ${counter}`);
     return sudoku;
   }
   return 'No result, unfortunately :(';
-}
+};
 
 // const initial = [
 //   [5, 3, 4, 6, 7, 8, 9, 0, 0],
